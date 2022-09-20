@@ -19,10 +19,11 @@ const Quiz = () => {
   let x = 0;
 
   useEffect(() => {
-    let getQuestions = async () => {
-      let results = await fetch(quizUrl)
+    let getQuestions =  () => {
+      let results =  fetch(quizUrl)
         .then((json) => json.json())
         .then((data) => setQuestions(data.results))
+        .catch((err)=> console.log(err))
         .finally(() => setLoading(false));
       return results;
     };
