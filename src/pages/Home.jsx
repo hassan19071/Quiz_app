@@ -25,7 +25,7 @@ const Home = () => {
   let handleSubmit = (e) => {
     e.preventDefault();
 
-    if (amountOfQtns == "") {
+    if (amountOfQtns === "") {
       setEnterAmount(false);
     } else {
       dispatch(

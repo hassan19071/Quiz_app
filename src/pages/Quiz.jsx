@@ -37,14 +37,14 @@ const Quiz = () => {
   let getCorrectAnswer = () => {
     dispatch(changeScore());
     dispatch(changeI());
-    if (i + 1 == questions.length) {
+    if (i + 1 === questions.length) {
       history("/score");
     }
   };
 
   let getInCorrectAnswer = () => {
     dispatch(changeI());
-    if (i + 1 == questions.length) {
+    if (i + 1 === questions.length) {
       history("/score");
     }
   };
@@ -62,7 +62,7 @@ const Quiz = () => {
         </div>
       ) : questions.length ? (
         questions.map((que) => {
-          return questions.indexOf(que) == i ? (
+          return questions.indexOf(que) === i ? (
             <div className="quiz" key={que.question}>
               <div className="container">
                 <div className="question">

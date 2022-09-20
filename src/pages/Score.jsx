@@ -12,7 +12,7 @@ const Score = () => {
   const score = useSelector((state) => state.data.score);
   const history = useNavigate();
   const dispatch = useDispatch();
-  const percentage = (score * 100) / amountOfQtns;
+  const [percentage,setPercentage] = useState((score * 100) / amountOfQtns);
   const [msg, setMsg] = useState("");
   const [color, setColor] = useState("");
 
@@ -38,7 +38,7 @@ const Score = () => {
     } else if (percentage >= 85 && percentage < 95) {
       content = decode("Your score is exellent &#128526;");
       setColor("exellent");
-    } else if (percentage >= 95 && percentage == 100) {
+    } else if (percentage >= 95 && percentage === 100) {
       content = decode("WOW, You are genius &#129327;");
       setColor("genuis");
     }
