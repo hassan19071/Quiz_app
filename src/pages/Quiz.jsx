@@ -19,8 +19,8 @@ const Quiz = () => {
   let x = 0;
 
   useEffect(() => {
-    let getQuestions =  () => {
-      let results =  fetch(quizUrl)
+    let getQuestions = async () => {
+      let results = await fetch(quizUrl)
         .then((json) => json.json())
         .then((data) => setQuestions(data.results))
         .catch((err)=> console.log(err))
@@ -28,7 +28,7 @@ const Quiz = () => {
       return results;
     };
     return getQuestions;
-  }, []);
+  });
 
   useEffect(() => {
     setRandom1(Math.floor(Math.random() * 4));

@@ -46,7 +46,7 @@ const Home = () => {
         <div className="row align-items-center">
           <div className="col-lg-5 order-lg-1 order-2">
             <div className="hero">
-              <h3>test your knowledge</h3>
+              <h3>test your knowledgehh</h3>
               {loading ? (
                 <div
                   className="spinner-border text-primary circle"
