@@ -28,7 +28,7 @@ const Quiz = () => {
       return results;
     };
     return getQuestions;
-  },[]);
+  },[history]);
 
   useEffect(() => {
     setRandom1(Math.floor(Math.random() * 4));
