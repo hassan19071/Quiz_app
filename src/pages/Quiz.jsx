@@ -10,7 +10,7 @@ const Quiz = () => {
   const amountOfQtns = useSelector((state) => state.data.amountOfQuestions);
   const score = useSelector((state) => state.data.score);
   const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const i = useSelector((state) => state.data.i);
   const dispatch = useDispatch();
   const history = useNavigate();
