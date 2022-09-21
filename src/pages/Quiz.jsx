@@ -27,7 +27,7 @@ const Quiz = () => {
         .finally(() => setLoading(false));
       return results;
     };
-    return getQuestions;
+     getQuestions();
   },[]);
 
   useEffect(() => {
