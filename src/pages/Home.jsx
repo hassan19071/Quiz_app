@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../style/home.css";
+import "../style/home.scss";
 import img from "../imgs/hero-img.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,23 +40,27 @@ const Home = () => {
   return (
     <div className="header">
       <div className="container">
-        <div className="logo">
-          <h1>Quiz!</h1>
-        </div>
         <div className="row align-items-center">
-          <div className="col-lg-5 order-lg-1 order-2">
+          <div className="col-lg-5 order-lg-2 order-1">
             <div className="hero">
+              <div className="logo">
+                <h1>Quiz!</h1>
+              </div>
               <h3>test your knowledge</h3>
               {loading ? (
                 <div
-                  className="spinner-border text-primary circle"
+                  className="spinner-border text-center circle"
                   role="status"
                 >
-                  <span className="visually-hidden">Loading...</span>
+                  <span className="visually-hidden text-center">
+                    Loading...
+                  </span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
+                  <label>Select Category</label>
                   <select
+                    className="mb-3"
                     value={activeCategory}
                     onChange={(e) => dispatch(changeCategory(e.target.value))}
                   >
@@ -69,7 +73,9 @@ const Home = () => {
                       );
                     })}
                   </select>
+                  <label>Select Difficulty</label>
                   <select
+                    className="mb-3"
                     value={activeDifficulty}
                     onChange={(e) => dispatch(changeDiff(e.target.value))}
                   >
@@ -77,14 +83,18 @@ const Home = () => {
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                   </select>
+                  <label>Select Questions Type</label>
                   <select
+                    className="mb-3"
                     value={activeType}
                     onChange={(e) => dispatch(changeType(e.target.value))}
                   >
                     <option value="multiple">Multiple Choice</option>
                     <option value="boolean">Truth / False</option>
                   </select>
+                  <label>Amount Of Questions</label>
                   <input
+                    className="mb-3"
                     type="number"
                     value={amountOfQtns}
                     onChange={(e) => dispatch(changeAmount(e.target.value))}
@@ -104,7 +114,7 @@ const Home = () => {
               )}
             </div>
           </div>
-          <div className="col-lg text-lg-end order-lg-2 order-1 mb-lg-0 mb-5">
+          <div className="col-lg order-lg-1 order-2 mt-lg-0 mt-5">
             <div className="img">
               <img src={img} alt="hero-img" />
             </div>

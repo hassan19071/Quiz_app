@@ -4,60 +4,51 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { defaultValues } from "../redux/getData";
-import "../style/home.css";
-import { decode } from "html-entities";
+import "../style/home.scss";
 
 const Score = () => {
   const amountOfQtns = useSelector((state) => state.data.amountOfQuestions);
   const score = useSelector((state) => state.data.score);
   const history = useNavigate();
   const dispatch = useDispatch();
-  const [percentage,setPercentage] = useState((score * 100) / amountOfQtns);
-  const [msg, setMsg] = useState("");
-  const [color, setColor] = useState("");
+  // eslint-disable-next-line no-unused-vars
+  const [percentage, setPercentage] = useState((score * 100) / amountOfQtns);
+  const pass = 50;
 
   let changePage = () => {
     dispatch(defaultValues());
     history("/");
   };
 
-  useEffect(() => {
-    let content = "";
-    if (percentage < 50) {
-      content = decode("Your score is bad &#128542;");
-      setColor("bad");
-    } else if (percentage >= 50 && percentage < 60) {
-      content = decode("Your score is not bad &#128578;");
-      setColor("not-bad");
-    } else if (percentage >= 60 && percentage < 70) {
-      content = decode("Your score is good &#128522;");
-      setColor("good");
-    } else if (percentage >= 70 && percentage < 85) {
-      content = decode("Your score is very good &#128525;");
-      setColor("very-good");
-    } else if (percentage >= 85 && percentage < 95) {
-      content = decode("Your score is exellent &#128526;");
-      setColor("exellent");
-    } else if (percentage >= 95 && percentage === 100) {
-      content = decode("WOW, You are genius &#129327;");
-      setColor("genuis");
-    }
-
-    return setMsg(content);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="score-page text-center">
-      <h1>Final Score</h1>
-      <p>
-        Your Score is {score} Up to {amountOfQtns}
-      </p>
-      <div className="msg">
-        <h5 className={color}>{msg}</h5>
+      <div className="score">
+        <h1>Final Score</h1>
+        <h3>Your Score: {percentage}%</h3>
+        <h3>Passing Score: {pass}%</h3>
+        <div className="msg mt-5 text-center">
+          <h5>Result</h5>
+          {percentage >= pass ? (
+            <>
+              <p>You Passed</p>
+              <p>Congratulations!</p>
+            </>
+          ) : (
+            <>
+              <p>You did not Pass</p>
+              <p>Better Luck Next Time!</p>
+            </>
+          )}
+        </div>
+        <button
+          onClick={changePage}
+          className="btn btn-primary back-to-settings"
+        >
+          Back to settings
+        </button>
       </div>
-      <button onClick={changePage} className="btn btn-primary back-to-settings">
-        Back to settings
-      </button>
     </div>
   );
 };

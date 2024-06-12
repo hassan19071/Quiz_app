@@ -1,27 +1,31 @@
 .header {
-  background-color: rgb(27, 114, 164);
+  background-color: rgb(238, 69, 80);
   height: 100vh;
-  // position: relative;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
+  padding: 50px 0;
   overflow-x: hidden;
+  background-image: url("../imgs/bg.jpg");
   .logo {
-    // position: absolute;
-    // top: 30px;
-    // left: 30px;
-    margin-bottom: 20px;
-    padding: 10px 0;
+    margin-bottom: 0px;
     h1 {
-      color: #eee;
+      color: #141414;
+      text-transform: uppercase;
+      font-size: 30px;
     }
   }
   .hero {
     text-align: center;
+    label {
+      color: #3d3c3c;
+      display: block;
+      text-align: start !important;
+      font-size: 14px;
+      font-weight: 600;
+    }
     h3 {
-      text-transform: uppercase;
-      color: rgb(235, 233, 233);
-      margin-bottom: 40px;
+      text-transform: capitalize;
+      color: rgb(49, 48, 48);
+      margin-bottom: 30px;
+      font-size: 20px;
     }
     a {
       padding: 8px 30px;
@@ -39,80 +43,144 @@
   select,
   input {
     width: 100%;
-    padding: 10px 20px;
-    margin: 10px 0;
+    padding: 10px 10px;
+    margin: 3px 0 10px;
     outline: none;
     border: none;
-    appearance: none;
-    color: #000;
+    color: #ffffff;
+    background-color: rgb(243, 94, 104);
+    font-size: 14px;
   }
   button {
     margin: 10px 0;
-    background-color: #eee !important;
-    color: rgb(27, 114, 164) !important;
+    background-color: #eee;
+    color: rgb(238, 69, 80);
     font-weight: 500;
     padding: 9px 30px;
     text-transform: uppercase;
+    width: 100%;
+    transition: 0.3s;
+    border: 1px solid rgb(238, 69, 80) !important;
+    &:hover {
+      background-color: rgb(238, 69, 80) !important;
+      color: #fff;
+    }
   }
   .circle {
-    border-color: #eee !important ;
+    border-color: #d84f4f !important ;
     border-left-color: transparent !important;
   }
   .warn {
     background-color: #eee;
     color: rgb(189, 22, 22);
     padding: 10px;
+    text-align: center;
   }
 }
 
 .quiz-app {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .quiz {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  background-image: url("../imgs/bg.jpg");
+  padding: 0 0 30px 0;
+  .circle {
+    width: 100%;
     height: 100vh;
-    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      border-color: rgb(238, 69, 80);
+      border-top-color: transparent;
+    }
+  }
+  .msg {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(243, 94, 104);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .questions-number {
+    width: fit-content;
+    background-color: rgb(223, 53, 53);
+    color: #fff;
+    padding: 20px 30px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .choices {
+    div {
+      background-color: #fff;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      margin: 10px auto;
+      padding: 15px 20px;
+      text-align: center;
+      font-weight: 600;
+      width: 70%;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 2px solid transparent;
+      &.active {
+        border: 2px solid #42933e;
+      }
+    }
+  }
+  .btns {
+    text-transform: uppercase;
+    .last {
+      background-color: #fff;
+      border: 2px solid #afadad;
+      padding: 13px 30px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .next {
+      background-color: rgb(223, 53, 53);
+      color: #fff;
+      padding: 13px 30px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+  .dots {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
     @media (max-width: 991px) {
+      position: fixed;
+      bottom: 0;
+      z-index: 44;
       width: 100%;
+      background-color: #fff;
+      padding: 15px;
     }
-    .question {
-      background-color: rgb(27, 114, 164);
-      padding: 20px;
-      color: #eee;
-      h4 {
-        user-select: none;
+    .dot {
+      width: 100%;
+      margin-right: 5px;
+      height: 8px;
+      background-color: rgb(223, 218, 218);
+      transition: 0.3s;
+      border-radius: 2px;
+      &.active {
+        background-color: rgb(238, 69, 80);
       }
     }
-    .choices {
-      padding: 50px 20px;
-      background-color: #eee;
-      .answers {
-        display: flex;
-        flex-direction: column;
-        .answer {
-          margin: 10px 0;
-          button {
-            width: 100%;
-            padding: 10px 20px;
-            background-color: rgb(27, 114, 164);
-            border: none;
-            color: #eee;
-            user-select: none;
-          }
-        }
-      }
-    }
-    .details {
-      background-color: rgb(27, 114, 164);
-      color: #eee;
-      padding: 20px;
-      p {
-        margin: 0;
-      }
+  }
+  .no {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    button {
+      background-color: rgb(238, 69, 80) !important;
+      color: #fff;
+      padding: 15px 20px;
+      border: 1px solid rgb(238, 69, 80);
     }
   }
 }
@@ -125,35 +193,40 @@
   overflow: hidden;
   flex-direction: column;
   color: rgb(227, 224, 224);
+  background-image: url(../imgs/result.jpg);
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+  .score {
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 40px 30px;
+    width: 60%;
+    border-radius: 20px;
+    background-image: url(../imgs//resultinside.jpg);
+    background-size: cover;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
   h1 {
     text-transform: uppercase;
+    color: #242323;
+    font-weight: 600;
   }
-  p {
-    margin: 10px 0 20px;
-    font-size: 20px;
+  h3 {
+    color: #111;
   }
   .msg {
     margin: 10px 0 30px;
-    text-transform: uppercase;
     h5 {
-      &.bad {
-        color: rgb(166, 32, 32);
-      }
-      &.not-bad {
-        color: rgba(146, 78, 11, 0.74);
-      }
-      &.good {
-        color: rgb(77, 120, 8);
-      }
-      &.very-good {
-        color: rgb(13, 100, 4);
-      }
-      &.exellent {
-        color: rgb(5, 84, 136);
-      }
-      &.genuis {
-        color: #000;
-      }
+      color: #111;
+      font-size: 30px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 20px;
+      color: #232222;
     }
   }
 }
